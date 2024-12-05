@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Generator</title>
+
+    <style>     
+        @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&display=swap');
+
+        body{
+            font-family: 'Dosis', sans-serif;
+            font-size: 17px;
+            margin: 0;
+            color: #272523;
+            background-color: #b0b9b4;
+            background-color: #d9e9eb9e;
+            max-width: 100%;
+            
+        }
+
+        .main-content{
+            margin: 5px;
+        }
+
+        .input-component{
+            margin-right: 10px;
+            display: inline-block;
+          
+        }
+
+        .input-container input{
+            border-radius: 5px;
+            border: solid 1px #aaa;
+            height: 18px;
+            padding: 2px 5px;
+        }
+
+        .input-container label{
+            display: block;
+        }
+
+        input[type='checkbox'], input[type='radio']{
+            width: 14px;
+            height: 14px;
+        }    
+
+        .one-line{
+            display: block;
+            color: rgb(48, 93, 177);
+            font-weight: 600;
+            width: fit-content;
+            font-size: 15px;
+        }
+
+        button{
+            width: 150px;
+            margin: auto;
+            
+            border-radius: 5px;
+            border: solid 1px #3f1985;
+            color: white;
+            background-color: #382b80;
+            height: 30px;
+            margin-bottom: 25px;
+        }
+
+        button:hover{
+            cursor: pointer;
+        }
+
+        .sub-label{
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: rgb(209, 50, 50);
+         
+        }
+
+        .copy-button-hide{
+            display: none;
+        }
+
+        .header{
+            width: 100%;
+            background-color: rgb(93, 92, 156);
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .header div{
+  
+            font-weight: bold;
+            color: #d4d6ed;
+            letter-spacing: 3px;
+            margin-left: 10px;
+            
+        }
+
+        .header div:after{
+            content: '';
+            background: url(tools.png) no-repeat center center;
+            width: 22px;
+            height: 22px;
+            position: relative;
+            top: 1px;
+            left: 7px;
+            display: inline-block;
+        }
+
+        h3{
+            font-size: 19px;
+            color:rgb(12, 47, 112);
+        }
+
+        .language-container label{
+            min-width: 150px;
+            display: inline-block;
+        }
+
+        .tools-container label{
+            min-width: 75px;
+            display: inline-block;
+        }
+
+        #display-container{
+            width: fit-content;
+        }
+
+        .link-title{
+            text-align: center;
+            font-size: 18px;
+            text-transform: capitalize;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+
+<!-- HEADER -->
+<div class="header">
+    <div>LINK GENERATOR</div>
+</div>
+
+<div class="main-content">
+<!-- INPUT -->
+<div class="input-container">
+
+    <div class="input-component">
+        <label>Company Code</label>
+        <input id="company-code" type="text">        
+    </div>
+    
+    <div class="input-component">
+        <label>Version</label>
+        <input id="version" type="text">
+        
+    </div>
+    
+    <div class="input-component">
+        <label >Solution ID</label>
+        <input id="solution-id" type="number">
+    </div>
+</div>
+
+
+<!-- TOOLS CHECKBOX -->
+<div class="tools-container">
+<h3>Tools</h3>
+
+    <label>
+    <input id="SG" data-link="sharegraph" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    SG
+    </label>
+
+    <label>
+    <input id="TSR" data-link="tsr/iframe" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    TSR
+    </label>
+
+    <label>
+    <input id="CA" data-link="pressreleases" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    CA
+    </label>
+
+    <label>
+    <input id="SC" data-link="subscriptioncentre2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    SC
+    </label>
+
+    <label>
+    <input id="SPL" data-link="splookup" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    SPL
+    </label>
+
+    <label>
+    <input id="IC" data-link="investmentcal2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    IC
+    </label>
+
+    <label>
+    <input id="IA" data-link="ia" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    IA
+    </label>
+
+    <label>
+    <input id="SS" data-link="shareseries" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    SS
+    </label>
+
+    <label>
+    <input id="LST" data-link="lst2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    LST
+    </label>
+
+
+    <label>
+    <input id="FC" data-link="fincalendar2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    FC
+    </label>
+
+    <label>
+    <input id="Ticker" data-link="ticker/html" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    Ticker
+    </label>
+
+    <label>
+    <input id="Fragulizer" data-link="fragulizer" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    Fragulizer
+    </label>
+
+          <!-- DIFFERENT LINKS
+          TICKER, FACTSHEET, BUNDLE -->
+
+          <!-- Regular Link -->
+          <!-- https://gamma.euroland.com/tools/splookup/?companycode=[]&lang=en-GB -->
+
+    <!-- Ticker -->
+    <!-- https://gamma.euroland.com/tools/ticker/html/?companycode=[]&lang=en-gb -->
+    <!-- FACTSHEET -->
+    <!-- https://gamma.euroland.com/factsheet/companycode[]/factsheethtml.asp?lang=english  -->
+    <!-- Bundle -->
+    <!-- https://gamma.euroland.com/tools/custom/companycode[]/bundle.html?lang=en-gb  -->
