@@ -176,6 +176,26 @@
     </label>
 
     <label>
+    <input id="SPL" data-link="splookup" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    SPL
+    </label>
+    
+    <label>
+    <input id="IC" data-link="investmentcal2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    IC
+    </label>
+    
+    <label>
+    <input id="IA" data-link="ia" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    IA
+    </label>
+    
+    <label>
+    <input id="SS" data-link="shareseries" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
+    SS
+    </label>
+
+    <label>
     <input id="TSR" data-link="tsr/iframe" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
     TSR
     </label>
@@ -191,30 +211,9 @@
     </label>
 
     <label>
-    <input id="SPL" data-link="splookup" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
-    SPL
-    </label>
-
-    <label>
-    <input id="IC" data-link="investmentcal2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
-    IC
-    </label>
-
-    <label>
-    <input id="IA" data-link="ia" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
-    IA
-    </label>
-
-    <label>
-    <input id="SS" data-link="shareseries" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
-    SS
-    </label>
-
-    <label>
     <input id="LST" data-link="lst2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
     LST
     </label>
-
 
     <label>
     <input id="FC" data-link="fincalendar2" data-check='true' class="tools" type="checkbox" onclick="isChecked(this)">
@@ -348,10 +347,16 @@
 <div>
     <label>
     <input id="asia-official-link" name="type-of-link" class="link-type" type="radio" onclick="isChecked(this)">
-    Official (Asia)
+    Official (ASIA)
     </label>
 </div>
 
+<div>
+    <label>
+    <input id="ksa-official-link" name="type-of-link" class="link-type" type="radio" onclick="isChecked(this)">
+    Official (KSA)
+    </label>
+</div>
 <br>
 
 
@@ -484,6 +489,7 @@
                   
                 }      
     }
+    
         }else{
             alert('Must input company code')
         }  
