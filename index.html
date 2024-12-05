@@ -243,3 +243,258 @@
     <!-- https://gamma.euroland.com/factsheet/companycode[]/factsheethtml.asp?lang=english  -->
     <!-- Bundle -->
     <!-- https://gamma.euroland.com/tools/custom/companycode[]/bundle.html?lang=en-gb  -->
+
+
+
+                 
+
+
+</div>
+
+
+
+
+<!-- LANGUAGE CHECKBOX -->
+<div class="language-container">
+<h3>Language</h3>
+<label>
+    <input id="english" checked data-langcode="en-gb" data-check='false' class="languages" type="checkbox" onclick="isChecked(this)">
+    English
+    <span class="sub-label">(en-gb)</span>
+</label>
+
+<label>
+    <input id="japanese" data-langcode="ja-jp" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Japanese
+    <span class="sub-label">(ja-jp)</span>
+</label>
+
+<label>
+    <input id="chinese" data-langcode="zh-cn" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Chinese (S)
+    <span class="sub-label">(zh-cn)</span>
+</label>
+
+<label>
+    <input id="chinese" data-langcode="zh-tw" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Chinese (T)
+    <span class="sub-label">(zh-tw)</span>
+</label>
+
+<label>
+    <input id="korean" data-langcode="ko-kr" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Korean
+    <span class="sub-label">(ko-kr)</span>
+</label>
+
+<label>
+    <input id="arabic" data-langcode="ar-ae" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Arabic
+    <span class="sub-label">(ar-ae)</span>
+</label>
+
+<label>
+    <input id="italian" data-langcode="it-it" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Italian
+    <span class="sub-label">(it-it)</span>
+</label>
+
+<label>
+    <input id="russian" data-langcode="ru-ru" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Russian
+    <span class="sub-label">(ru-ru)</span>
+</label>
+
+<label>
+    <input id="finnish" data-langcode="fi-fi" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Finnish
+    <span class="sub-label">(fi-fi)</span>
+</label>
+
+<label>
+    <input id="spanish" data-langcode="es-es" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Spanish
+    <span class="sub-label">(es-es)</span>
+</label>
+
+<label>
+    <input id="estonian" data-langcode="et-ee" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
+    Estonian
+    <span class="sub-label">(et-ee)</span>
+</label>
+
+
+
+
+</div>
+<br>
+
+<!-- LINK TYPE CHECKBOX -->
+<h3>Link Type</h3>
+<div>
+    <label>
+    <input id="test-link" name="type-of-link" checked  class="link-type" type="radio" onclick="isChecked(this)">
+    Test
+    </label>
+</div>
+
+<div>
+    <label>
+    <input id="official-link" name="type-of-link"  class="link-type" type="radio" onclick="isChecked(this)">
+    Official
+    </label>
+</div>
+
+<div>
+    <label>
+    <input id="asia-official-link" name="type-of-link" class="link-type" type="radio" onclick="isChecked(this)">
+    Official (Asia)
+    </label>
+</div>
+
+<br>
+
+
+<!-- BUTTON -->
+<button type="button" id="generate-btn">Generate Links</button>
+
+<!-- GENERATED DISPLAY -->
+<div id="display-container">
+
+</div>
+
+</div>
+
+
+</body>
+
+<script>
+    // INPUT
+    let companyCode = document.getElementById('company-code')
+    let solutionID = document.getElementById('solution-id')
+    let version = document.getElementById('version')
+
+    // BUTTON
+    let button = document.getElementById('generate-btn')
+    // DISPLAY
+    let displayContainer = document.getElementById('display-container')
+
+    const linkArray = []
+    const toolArray = []
+    const languageArray = ['en-gb']
+
+    let typeOFLink = 'test-link'
+
+    const isChecked = (e) =>{
+    //create a condition if check then add if uncheck then remove
+
+        // if statement to monitor if checkbox is checked or unchecked
+        if(e.getAttribute('data-check') == 'true'){           
+            //add value to array when check
+            if(e.className == 'tools'){             
+                toolArray.push(e.id)
+                linkArray.push(e.getAttribute('data-link'))
+                console.log(e.id)
+                   
+            } else if(e.className == 'languages'){
+                languageArray.push(e.getAttribute('data-langcode'))            
+            } 
+
+            e.setAttribute('data-check', 'false')
+
+        //remove value from array when uncheck
+        }else{
+            console.log(e.id + ' is false')
+
+            for(let i=0; i<linkArray.length; i++){
+                if(e.getAttribute('data-link') == linkArray[i]){
+                    linkArray.splice(i, 1)
+                }              
+            }    
+            
+            for(let i=0; i<languageArray.length; i++){
+                if(e.getAttribute('data-langcode') == languageArray[i]){
+                    languageArray.splice(i, 1)
+                }              
+            }
+
+            for(let i=0; i<toolArray.length; i++){
+                if(e.id == toolArray[i]){
+                    toolArray.splice(i, 1)
+                }               
+            }                  
+
+            e.setAttribute('data-check', 'true')
+        }
+
+        if(e.getAttribute('class') == 'link-type'){
+            typeOFLink = e.id
+
+            console.log(typeOFLink)
+        }
+
+       console.log(linkArray)
+       console.log(languageArray)
+       console.log(toolArray)
+        
+    }
+
+    const generateLink = () => {
+    
+        // to clear display container for every click
+        displayContainer.innerHTML = ''
+
+     
+
+        if(companyCode.value){
+
+            //display div of link type (test, official, asia-official)
+            let linkType = document.createElement('div')
+            linkType.innerHTML = typeOFLink
+            linkType.setAttribute('class', 'link-title')
+            displayContainer.appendChild(linkType)
+
+            // for creating Tools link
+            for(let i=0; i<linkArray.length; i++){
+            let title = document.createElement('div')
+            title.innerHTML = toolArray[i]
+            displayContainer.appendChild(title)
+
+                for(let x=0; x<languageArray.length; x++){
+
+                    
+                    let display = document.createElement('a')
+                    
+
+                    toolArray[i] == 'SG' 
+                    ? 
+                    display.innerHTML = `https://${typeOFLink == 'official-link' ? 'tools.eurolandir.com' : typeOFLink == 'asia-official-link' ? 'asia.tools.euroland.com' : 'gamma.euroland.com'}/tools/sharegraph/?s=${solutionID.value}&companycode=${companyCode.value}&lang=${languageArray[x]}`
+                    :
+                    display.innerHTML = `https://${typeOFLink == 'official-link' ? 'tools.eurolandir.com' : typeOFLink == 'asia-official-link' ? 'asia.tools.euroland.com' : 'gamma.euroland.com'}/tools/${linkArray[i]}/?companycode=${companyCode.value}${version.value ? `&v=${version.value}` : ''}&lang=${languageArray[x]}`
+                    
+                    //we used .replaceAll because without it, the url will translate & as &amp; in browser
+                    let ampFilter = display.innerHTML.replaceAll('&amp;', '&')
+
+                    display.setAttribute('href', ampFilter)
+                    display.setAttribute('target', '_blank')
+                    displayContainer.appendChild(display)
+
+                    display.id = toolArray[i] 
+                    display.className = 'one-line'
+                  
+                }      
+    }
+        }else{
+            alert('Must input company code')
+        }  
+
+        window.scrollTo(0, document.body.scrollHeight);
+
+    }
+
+    button.addEventListener('click', generateLink)
+</script>
+</html>
+
+
+
