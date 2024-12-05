@@ -102,7 +102,7 @@
         .header div{
   
             font-weight: bold;
-            color: #FFF;
+            color: #d4d6ed;
             letter-spacing: 3px;
             margin-left: 10px;
             
@@ -322,7 +322,7 @@
 
 <label>
     <input id="german" data-langcode="de-de" data-check='true' class="languages" type="checkbox" onclick="isChecked(this)">
-    German
+    Finnish
     <span class="sub-label">(de-de)</span>
 </label>
 
@@ -489,9 +489,9 @@
 
                     toolArray[i] == 'SG' 
                     ? 
-                    display.innerHTML = `https://${typeOFLink == 'official-link' ? 'tools.eurolandir.com' : typeOFLink == 'ksa-official-link' ? 'ksatools.eurolandir.com' : typeOFLink == 'asia-official-link' ? 'asia.tools.euroland.com' : 'gamma.euroland.com'}/tools/sharegraph/?s=${solutionID.value}&companycode=${companyCode.value}&lang=${languageArray[x]}`
+                    display.innerHTML = `https://${typeOFLink == 'official-link' ? 'tools.eurolandir.com' : typeOFLink == 'asia-official-link' ? 'asia.tools.euroland.com' : 'gamma.euroland.com'}/tools/sharegraph/?s=${solutionID.value}&companycode=${companyCode.value}&lang=${languageArray[x]}`
                     :
-                    display.innerHTML = `https://${typeOFLink == 'official-link' ? 'tools.eurolandir.com' : typeOFLink == 'ksa-official-link' ? 'ksatools.eurolandir.com' : typeOFLink == 'asia-official-link' ? 'asia.tools.euroland.com' : 'gamma.euroland.com'}/tools/${linkArray[i]}/?companycode=${companyCode.value}${version.value ? `&v=${version.value}` : ''}&lang=${languageArray[x]}`
+                    display.innerHTML = `https://${typeOFLink == 'official-link' ? 'tools.eurolandir.com' : typeOFLink == 'asia-official-link' ? 'asia.tools.euroland.com' : 'gamma.euroland.com'}/tools/${linkArray[i]}/?companycode=${companyCode.value}${version.value ? `&v=${version.value}` : ''}&lang=${languageArray[x]}`
                     
                     //we used .replaceAll because without it, the url will translate & as &amp; in browser
                     let ampFilter = display.innerHTML.replaceAll('&amp;', '&')
